@@ -1,0 +1,1258 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APIs públicas na plataforma TOTVS. Módulos Datasul ACR/UTB",
+    "version": "1.0.0",
+    "title": "TOTVS - ACR/UTB",
+    "termsOfService": "https://www.totvs.com/termos-de-uso/",
+    "contact": {
+      "email": "box@totvs.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "gales:8180",
+  "basePath": "/dts/datasul-rest/resources/prg/fin/v1/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "holderPublic",
+      "description": "Portador"
+    },
+    {
+      "name": "bankPublic",
+      "description": "Banco"
+    },
+    {
+      "name": "portfolioPublic",
+      "description": "Carteira Bancária"
+    },
+    {
+      "name": "documentTypePublic",
+      "description": "Espécie de Documento"
+    },
+    {
+      "name": "checkingAccountPublic",
+      "description": "Conta Corrente"
+    },
+    {
+      "name": "receivableDocumentPublic",
+      "description": "Título Contas a Receber"
+    },
+    {
+      "name": "businessUnitPublic",
+      "description": "Unidade de Negócio"
+    }
+  ],
+  "paths": {
+    "/holderPublic": {
+      "get": {
+        "tags": [
+          "holderPublic"
+        ],
+        "summary": "Realiza a carga do Portador.",
+        "description": "Este serviço permite a visualização do Portador.",
+        "operationId": "getholderPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/HolderPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/bankPublic": {
+      "get": {
+        "tags": [
+          "bankPublic"
+        ],
+        "summary": "Realiza a carga dos Bancos .",
+        "description": "Este serviço permite a visualização dos Bancos.",
+        "operationId": "getbankPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/BankPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/portfolioPublic": {
+      "get": {
+        "tags": [
+          "portfolioPublic"
+        ],
+        "summary": "Realiza a carga de Carteira Bancária.",
+        "description": "Este serviço permite a visualização de Carteira Bancária.",
+        "operationId": "getportfolioPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/PortfolioPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/documentTypePublic": {
+      "get": {
+        "tags": [
+          "documentTypePublic"
+        ],
+        "summary": "Realiza a carga das Espécies de Documento.",
+        "description": "Este serviço permite a visualização das lista de Espécies de Documento.",
+        "operationId": "getdocumentTypePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/documentTypePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/receivableDocumentPublic": {
+      "get": {
+        "tags": [
+          "receivableDocumentPublic"
+        ],
+        "summary": "Realiza a carga dos Títulos de Contas a Receber.",
+        "description": "Este serviço permite a visualização dos Títulos de Contas a Receber. \r\n`Campos Indexados:` {dtsUID, companyCode, branchCode, documentType, documentPrefix, documentNumber, documentParcel, customerCode, customerShortName, holderCode, represent, issueDate, dueDate, transactionDate, forecastSettleDate, settleDate}",
+        "operationId": "getreceivableDocumentPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastMovto",
+            "in": "query",
+            "description": "Data de movimentação do Título",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "issueDateFirst",
+            "in": "query",
+            "description": "Data de inicial de emissão do Título",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "issueDateLast",
+            "in": "query",
+            "description": "Data de final de emissão do Título",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/ReceivableDocumentPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/checkingAccountPublic": {
+      "get": {
+        "tags": [
+          "checkingAccountPublic"
+        ],
+        "summary": "Realiza a carga dos registros de Conta Corrente.",
+        "description": "Este serviço permite a visualização dos registros de Conta Corrente.",
+        "operationId": "getcheckingAccountPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/CheckingAccountPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/businessUnitPublic": {
+      "get": {
+        "tags": [
+          "businessUnitPublic"
+        ],
+        "summary": "Realiza a carga das Unidade de Negócio.",
+        "description": "Este serviço permite a visualização das Unidade de Negócio.",
+        "operationId": "getbusinessUnitPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },          
+          {
+            "name": "businessUnitCode",
+            "in": "query",
+            "description": "Considera a Unidade de Negócio.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/BusinessUnitPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "HolderPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna o Portador cadastrado no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações do Portador cadastrado no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HolderPublic"
+          }
+        }
+      }
+    },
+    "HolderPublic": {
+      "type": "object",
+      "description": "Portador",
+      "properties": {
+        "bank": {
+          "type": "string",
+          "field": "portador.cod_banco",
+          "description": "Código Banco"
+        },
+        "bankBranch": {
+          "type": "string",
+          "field": "portador.cod_agenc_bcia",
+          "description": "Código Agência Bancária"
+        },
+        "corporateNumber": {
+          "type": "integer",
+          "field": "portador.num_pessoa_jurid",
+          "description": "Número Pessoa Jurídica"
+        },
+        "holderCode": {
+          "type": "string",
+          "field": "portador.cod_portador",
+          "description": "Código Portador"
+        },
+        "holderType": {
+          "type": "integer",
+          "field": "-",
+          "description": "Tipo Portador"
+        },
+        "holderTypeDescription": {
+          "type": "string",
+          "field": "portador.ind_tip_portad",
+          "description": "Descrição Tipo Portador"
+        },
+        "shortName": {
+          "type": "string",
+          "field": "portador.nom_abrev",
+          "description": "Nome Abreviado"
+        },
+        "branchHolder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/branchHolder"
+          },
+          "description": "Estabelecimentos do Portador."
+        }
+      }
+    },
+    "branchHolder": {
+      "type": "object",
+      "description": "Estabelecimentos do Portador",
+      "properties": {
+        "branchCode": {
+          "type": "string",
+          "field": "portad_estab.cod_estab",
+          "description": "Código Estabelecimento"
+        },
+        "holderCode": {
+          "type": "string",
+          "field": "portad_estab.cod_portador",
+          "description": "Código Portador"
+        }
+      }
+    },
+    "BankPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna o Banco cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações do Banco cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankPublic"
+          }
+        }
+      }
+    },
+    "BankPublic": {
+      "type": "object",
+      "description": "Banco",
+      "properties": {
+        "accountCurrentFormat": {
+          "type": "string",
+          "field": "banco.cod_format_cta_corren",
+          "description": "Código Formato Conta Corrente"
+        },
+        "agencyFormat": {
+          "type": "string",
+          "field": "banco.cod_format_agenc_bcia",
+          "description": "Código Formato Agência Bancária"
+        },
+        "autoDebitEnables": {
+          "type": "boolean",
+          "field": "banco.log_permite_db_autom",
+          "description": "Lógico Permite Efetuar Débito Automático"
+        },
+        "bankCode": {
+          "type": "string",
+          "field": "banco.cod_banco",
+          "description": "Código Banco"
+        },
+        "bankName": {
+          "type": "string",
+          "field": "banco.nom_banco",
+          "description": "Nome Banco"
+        },
+        "bankSlipLayout": {
+          "type": "string",
+          "field": "banco.cod_layout_boleto",
+          "description": "Código Layout Boleto"
+        },
+        "bankSystemCode": {
+          "type": "string",
+          "field": "banco.cod_sist_nac_bcio",
+          "description": "Código do Banco no Sistema Nacional Bancário"
+        },
+        "statmentLayout": {
+          "type": "string",
+          "field": "banco.cod_layout_extrat",
+          "description": "Código Layout Extrato Conta Corrente"
+        },
+        "taxCalcTypeCMG": {
+          "type": "string",
+          "field": "banco.cod_tip_calc_impto_cmg",
+          "description": "Código Tipo Calculo Imposto Movimentação Financeira"
+        },
+        "validateZipTar": {
+          "type": "boolean",
+          "field": "banco.log_validac_cep_destinac",
+          "description": "Lógico Validação Cep na Destinação"
+        },
+        "bankBranch": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bankBranch"
+          },
+          "description": "Agências"
+        }
+      }
+    },
+    "bankBranch": {
+      "type": "object",
+      "description": "Agências",
+      "properties": {
+        "bankBranchCode": {
+          "type": "string",
+          "field": "agenc_bcia.cod_agenc_bcia",
+          "description": "Código Agência Bancária"
+        },
+        "bankBranchDigit": {
+          "type": "string",
+          "field": "agenc_bcia.cod_digito_agenc_bcia",
+          "description": "Código do Dígito da Agência Bancária"
+        },
+        "bankCode": {
+          "type": "string",
+          "field": "agenc_bcia.cod_banco",
+          "description": "Código Banco"
+        }
+      }
+    },
+    "CheckingAccountPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna as Contas Correntes cadastradas no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações das Contas Correntes cadastradas no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CheckingAccountPublic"
+          }
+        }
+      }
+    },
+    "CheckingAccountPublic": {
+      "type": "object",
+      "description": "Conta Corrente",
+      "properties": {
+        "bankBranchCode": {
+          "type": "string",
+          "field": "cta_corren.cod_agenc_bcia",
+          "description": "Código Agência Bancária"
+        },
+        "bankCheckingAccount": {
+          "type": "string",
+          "field": "cta_corren.cod_cta_corren_bco",
+          "description": "Código Conta Corrente no Banco"
+        },
+        "bankCode": {
+          "type": "string",
+          "field": "cta_corren.cod_banco",
+          "description": "Código Banco"
+        },
+        "branchCode": {
+          "type": "string",
+          "field": "cta_corren.cod_estab",
+          "description": "Código Estabelecimento"
+        },
+        "businessUnit": {
+          "type": "string",
+          "field": "cta_corren.cod_unid_negoc",
+          "description": "Código Unidade Negócio"
+        },
+        "checkingAccountCode": {
+          "type": "string",
+          "field": "cta_corren.cod_cta_corren",
+          "description": "Código Conta Corrente"
+        },
+        "checkingAccountDigit": {
+          "type": "string",
+          "field": "cta_corren.cod_digito_cta_corren",
+          "description": "Dígito Verificador da Conta Corrente"
+        },
+        "purpose": {
+          "type": "string",
+          "field": "cta_corren.cod_finalid_econ",
+          "description": "Código Finalidade Econômica"
+        },
+        "shortName": {
+          "type": "string",
+          "field": "cta_corren.nom_abrev",
+          "description": "Nome Abreviado"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "field": "cta_corren.dat_inic_movimen",
+          "description": "Data Início Movimentação"
+        }
+      }
+    },
+    "PortfolioPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna as Carteiras Bancárias cadastradas no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações das Carteiras Bancárias cadastradas no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PortfolioPublic"
+          }
+        }
+      }
+    },
+    "PortfolioPublic": {
+      "type": "object",
+      "description": "Carteira Bancária",
+      "properties": {
+        "portfolioCode": {
+          "type": "string",
+          "field": "cart_bcia.cod_cart_bcia",
+          "description": "Carteira Bancária"
+        },
+        "portfolioDescription": {
+          "type": "string",
+          "field": "cart_bcia.des_cart_bcia",
+          "description": "Descrição Carteira Bancária"
+        },
+        "portfolioType": {
+          "type": "integer",
+          "field": "-",
+          "description": "Indicador Tipo Carteira Bancária"
+        },
+        "portfolioTypeDescription": {
+          "type": "string",
+          "field": "cart_bcia.ind_tip_cart_bcia",
+          "description": "Descrição Indicador Tipo Carteira Bancária"
+        }
+      }
+    },
+    "ReceivableDocumentPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os Títulos de Contas a Receber cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos Títulos de Contas a Receber cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReceivableDocumentPublic"
+          }
+        }
+      }
+    },
+    "ReceivableDocumentPublic": {
+      "type": "object",
+      "description": "Títulos de Contas a Receber",
+      "properties": {
+        "balanceValue": {
+          "type": "number",
+          "field": "tit_acr.val_sdo_tit_acr",
+          "description": "Valor Saldo Contas a Receber"
+        },
+        "bankExpenditures": {
+          "type": "number",
+          "field": "tit_acr.val_despes_bcia",
+          "description": "Valor Despesa Bancária"
+        },
+        "bankStatus": {
+          "type": "integer",
+          "field": "-",
+          "description": "Situacao Bancária do Titulo"
+        },
+        "bankStatusDescription": {
+          "type": "string",
+          "field": "tit_acr.ind_sit_bcia_tit_acr",
+          "description": "Descrição da Situacao Bancária do Titulo"
+        },
+        "branchCode": {
+          "type": "string",
+          "field": "tit_acr.cod_estab",
+          "description": "Código Estabelecimento"
+        },
+        "companyCode": {
+          "type": "string",
+          "field": "tit_acr.cod_empresa",
+          "description": "Código Empresa"
+        },
+        "currencyCode": {
+          "type": "string",
+          "field": "tit_acr.cod_indic_econ",
+          "description": "Código Indicador Econômico"
+        },
+        "customerCode": {
+          "type": "integer",
+          "field": "tit_acr.cdn_cliente",
+          "description": "Código Cliente"
+        },
+        "customerShortName": {
+          "type": "string",
+          "field": "tit_acr.nom_abrev",
+          "description": "Nome Abreviado"
+        },
+        "discountDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_desconto",
+          "description": "Maior Data Pagamento Direito Desconto"
+        },
+        "discountPercent": {
+          "type": "number",
+          "field": "tit_acr.val_perc_desc",
+          "description": "Percentual Desconto"
+        },
+        "discountValue": {
+          "type": "number",
+          "field": "tit_acr.val_desc_tit_acr",
+          "description": "Valor de Desconto do Título"
+        },
+        "documentNumber": {
+          "type": "string",
+          "field": "tit_acr.cod_tit_acr",
+          "description": "Código Título Contas a Receber"
+        },
+        "documentParcel": {
+          "type": "string",
+          "field": "tit_acr.cod_parcela",
+          "description": "Parcela"
+        },
+        "documentPrefix": {
+          "type": "string",
+          "field": "tit_acr.cod_ser_docto",
+          "description": "Código Série Documento"
+        },
+        "documentType": {
+          "type": "string",
+          "field": "tit_acr.cod_espec_docto",
+          "description": "Código Espécie Documento"
+        },
+        "dtsUID": {
+          "type": "integer",
+          "field": "tit_acr.num_id_tit_acr",
+          "description": "Token para tabela tit acr"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_vencto_tit_acr",
+          "description": "Data Vencimento Título"
+        },
+        "forecastSettleDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_prev_liquidac",
+          "description": "Data Prevista Liquidação"
+        },
+        "grossValue": {
+          "type": "number",
+          "field": "tit_acr.val_origin_tit_acr",
+          "description": "Valor Original do Título"
+        },
+        "holderCode": {
+          "type": "string",
+          "field": "tit_acr.cod_portador",
+          "description": "Código Portador"
+        },
+        "interestDayPercent": {
+          "type": "number",
+          "field": "tit_acr.val_perc_juros_dia_atraso",
+          "description": "Percentual Juros Dia Atraso"
+        },
+        "interestValue": {
+          "type": "number",
+          "field": "tit_acr.val_juros",
+          "description": "Valor Juros Pagos"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_emis_docto",
+          "description": "Data Emissão Documento"
+        },
+        "netValue": {
+          "type": "number",
+          "field": "tit_acr.val_liq_tit_acr",
+          "description": "Valor Líquido do Título ACR"
+        },
+        "notes": {
+          "type": "string",
+          "field": "tit_acr.des_observacao",
+          "description": "Descrição Observação"
+        },
+        "origDueDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_vencto_origin_tit_acr",
+          "description": "Data de Vencimento Original do Título"
+        },
+        "penaltyPercent": {
+          "type": "number",
+          "field": "tit_acr.val_perc_multa_atraso",
+          "description": "Percentual Multa Atraso"
+        },
+        "penaltyValue": {
+          "type": "number",
+          "field": "tit_acr.val_multa_tit_acr",
+          "description": "Valor da Multa do Título"
+        },
+        "portfol": {
+          "type": "string",
+          "field": "tit_acr.cod_cart_bcia",
+          "description": "Carteira Bancária"
+        },
+        "reductionDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_abat_tit_acr",
+          "description": "Data de Abatimento do Título"
+        },
+        "reductionPercent": {
+          "type": "number",
+          "field": "tit_acr.val_perc_abat_acr",
+          "description": "Valor Percentual Abatimento ACR"
+        },
+        "reductionValue": {
+          "type": "number",
+          "field": "tit_acr.val_abat_tit_acr",
+          "description": "Valor de Abatimento do Título"
+        },
+        "represent": {
+          "type": "integer",
+          "field": "tit_acr.cdn_repres",
+          "description": "Código Representante"
+        },
+        "reversal": {
+          "type": "boolean",
+          "field": "tit_acr.log_tit_acr_estordo",
+          "description": "Título Estornado?"
+        },
+        "settleDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_liquidac_tit_acr",
+          "description": "Data de Liquidação do  Título"
+        },
+        "status": {
+          "type": "integer",
+          "field": "-",
+          "description": "Situação Título Contas a Receber"
+        },
+        "statusDescription": {
+          "type": "string",
+          "field": "tit_acr.ind_sit_tit_acr",
+          "description": "Descrição Situação Título Contas a Receber"
+        },
+        "transactionDate": {
+          "type": "string",
+          "format": "date",
+          "field": "tit_acr.dat_transacao",
+          "description": "Data Transação"
+        },
+        "movements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/movements"
+          },
+          "description": "Movimentos"
+        }
+      }
+    },
+    "movements": {
+      "type": "object",
+      "description": "Movimentos",
+      "properties": {
+        "branch": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_estab",
+          "description": "Código Estabelecimento"
+        },
+        "company": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_empresa",
+          "description": "Código Empresa"
+        },
+        "creditDate": {
+          "type": "string",
+          "format": "date",
+          "field": "movto_tit_acr.dat_cr_movto_tit_acr",
+          "description": "Data de Crédito do Movimento do Título"
+        },
+        "discountAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_desconto",
+          "description": "Valor Desconto Quando Pago Até Data Desconto"
+        },
+        "documentType": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_espec_docto",
+          "description": "Código Espécie Documento"
+        },
+        "dtsUID": {
+          "type": "integer",
+          "field": "movto_tit_acr.num_id_tit_acr",
+          "description": "Token para tabela tit acr"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date",
+          "field": "movto_tit_acr.dat_vencto_tit_acr",
+          "description": "Data Vencimento Título"
+        },
+        "expenseBankAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_despes_bcia",
+          "description": "Valor Despesa Bancária"
+        },
+        "expenseFinancialAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_despes_financ",
+          "description": "Valor Despesas Financeiras"
+        },
+        "holder": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_portador",
+          "description": "Código Portador"
+        },
+        "idMovto": {
+          "type": "integer",
+          "field": "movto_tit_acr.num_id_movto_tit_acr",
+          "description": "Identificador da Tabela de Movimento do Título"
+        },
+        "interestAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_juros",
+          "description": "Valor Juros Pagos"
+        },
+        "IOFAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_impto_operac_financ",
+          "description": "Valor Imposto Operação Financeira"
+        },
+        "paymentReference": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_refer",
+          "description": "Código Referência"
+        },
+        "penaltyAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_multa_tit_acr",
+          "description": "Valor da Multa do Título"
+        },
+        "portfol": {
+          "type": "string",
+          "field": "movto_tit_acr.cod_cart_bcia",
+          "description": "Carteira Bancária"
+        },
+        "reductionAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_abat_tit_acr",
+          "description": "Valor de Abatimento do Título"
+        },
+        "settlementDate": {
+          "type": "string",
+          "format": "date",
+          "field": "movto_tit_acr.dat_liquidac_tit_acr",
+          "description": "Data de Liquidação do  Título"
+        },
+        "transactionAmount": {
+          "type": "number",
+          "field": "movto_tit_acr.val_movto_tit_acr",
+          "description": "Valor do Movimento"
+        },
+        "transactionDate": {
+          "type": "string",
+          "format": "date",
+          "field": "movto_tit_acr.dat_transacao",
+          "description": "Data Transação"
+        }
+      }
+    },
+    "documentTypePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna a lista de Espécies de Documento cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações das lista de Espécies de Documento cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/documentTypePublic"
+          }
+        }
+      }
+    },
+    "documentTypePublic": {
+      "type": "object",
+      "description": "Espécie de documento",
+      "properties": {
+        "code": {
+          "type": "string",
+          "field": "espec_docto.cod_espec_docto",
+          "description": "Código Espécie Documento"
+        },
+        "description": {
+          "type": "string",
+          "field": "espec_docto.des_espec_docto",
+          "description": "Descrição Espécie"
+        },
+        "documentType": {
+          "type": "integer",
+          "field": "-",
+          "description": "Tipo Espécie Documento"
+        },
+        "documentTypeDescription": {
+          "type": "string",
+          "field": "espec_docto.ind_tip_espec_docto",
+          "description": "Descrição Tipo Espécie Documento"
+        }
+      }
+    },
+    "businessUnitPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna a lista de Unidades de Negócio cadastradas no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações das lista de Unidades de Negócio cadastradas no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/businessUnitPublic"
+          }
+        }
+      }
+    },
+    "businessUnitPublic": {
+      "type": "object",
+      "description": "Espécie de documento",
+      "properties": {
+        "businessUnitCode": {
+          "type": "string",
+          "field": "unid_negoc.cod_unid_negoc",
+          "description": "Código Unidade de Negócio"
+        },
+        "businessUnitName": {
+          "type": "string",
+          "field": "unid_negoc.des_unid_negoc",
+          "description": "Descrição Unidade de Negócio"
+        }        
+      }
+    }
+  }
+}

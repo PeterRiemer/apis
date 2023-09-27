@@ -1,0 +1,1647 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APIs públicas na plataforma TOTVS. Módulo Datasul CEP",
+    "version": "1.0.0",
+    "title": "TOTVS - CEP",
+    "termsOfService": "https://www.totvs.com/termos-de-uso/",
+    "contact": {
+      "email": "box@totvs.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "gales:8180",
+  "basePath": "/dts/datasul-rest/resources/prg/cep/v1/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "inventoryGroupsPublic",
+      "description": "Grupo de Estoque"
+    },
+    {
+      "name": "materialFamiliesPublic",
+      "description": "Família de Material"
+    },
+    {
+      "name": "productPublic",
+      "description": "Item"
+    },
+    {
+      "name": "productSkuPublic",
+      "description": "Item SKU"
+    },
+    {
+      "name": "stockBalancePublic",
+      "description": "Saldo Estoque"
+    },
+    {
+      "name": "warehousePublic",
+      "description": "Depósitos"
+    }
+  ],
+  "paths": {
+    "/inventoryGroupsPublic": {
+      "get": {
+        "tags": [
+          "inventoryGroupsPublic"
+        ],
+        "summary": "Realiza a carga de Grupos de Estoque.",
+        "description": "Este serviço permite a visualização dos Grupos de Estoque.",
+        "operationId": "getinventoryGroupsPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/inventoryGroupsPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/productPublic": {
+      "get": {
+        "tags": [
+          "productPublic"
+        ],
+        "summary": "Realiza a carga dos Itens.",
+        "description": "Este serviço permite a visualização dos Itens. \r\n`Campos Indexados:` {taxClassification, auxiliaryCode, siteCode, obsolete, serviceCode, businessUnit, productDescription, businessFamily, familyCode, inventoryGroup, productCode, controlType, measureUnit}",
+        "operationId": "getproductPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastUpdate",
+            "in": "query",
+            "description": "Data de sincronização dos registros",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/productPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/productPublic/ecommerce": {
+      "get": {
+        "tags": [
+          "productPublic"
+        ],
+        "summary": "Realiza a carga dos itens pertecentes a integração com a VTEX",
+        "description": "Este serviço permite a visualização dos itens VTEX.",
+        "operationId": "getProductStorePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastUpdate",
+            "in": "query",
+            "description": "Data de sincronização dos registros",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "isB2B",
+            "in": "query",
+            "description": "Quando informado irá retornar apenas os registros configurados para o modo de negócio B2B, do contrário sempre será considerado o B2C.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "storeCode",
+            "in": "query",
+            "description": "Permite aplicar o filtro por loja, informando nesse parâmetro o código da loja.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/productStorePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/productSkuPublic/ecommerce": {
+      "get": {
+        "tags": [
+          "productSkuPublic"
+        ],
+        "summary": "Realiza a carga dos SKU pertecentes a integração com a VTEX",
+        "description": "Este serviço permite a visualização dos SKU VTEX.",
+        "operationId": "getProductSkuStorePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastUpdate",
+            "in": "query",
+            "description": "Data de sincronização dos registros",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "isB2B",
+            "in": "query",
+            "description": "Quando informado irá retornar apenas os registros configurados para o modo de negócio B2B, do contrário sempre será considerado o B2C.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "storeCode",
+            "in": "query",
+            "description": "Permite aplicar o filtro por loja, informando nesse parâmetro o código da loja.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/productSkuStorePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/stockBalancePublic": {
+      "get": {
+        "tags": [
+          "stockBalancePublic"
+        ],
+        "summary": "Realiza a carga dos Saldos de Estoque.",
+        "description": "Este serviço permite a visualização dos Saldos de Estoque. \r\n`Campos Indexados:` {warehouseCode, siteCode, locationCode, referenceCode, expirationDate, itemCode, lot}",
+        "operationId": "getstockBalancePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastMovto",
+            "in": "query",
+            "description": "Data de movimentação de estoque",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/stockBalancePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/stockBalancePublic/ecommerce": {
+      "get": {
+        "tags": [
+          "stockBalancePublic"
+        ],
+        "summary": "Realiza a carga do saldo em estoque dos itens pertecentes a integração com a VTEX",
+        "description": "Este serviço permite a visualização do saldo em estoque dos itens VTEX.",
+        "operationId": "getStockBalanceStorePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lastUpdate",
+            "in": "query",
+            "description": "Data de sincronização dos registros",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "isB2B",
+            "in": "query",
+            "description": "Quando informado irá retornar apenas os registros configurados para o modo de negócio B2B, do contrário sempre será considerado o B2C.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "storeCode",
+            "in": "query",
+            "description": "Permite aplicar o filtro por loja, informando nesse parâmetro o código da loja.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/stockBalanceStorePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/materialFamiliesPublic": {
+      "get": {
+        "tags": [
+          "materialFamiliesPublic"
+        ],
+        "summary": "Realiza a carga das Famílias de Materiais.",
+        "description": "Este serviço permite a visualização das Famílias de Materiais.",
+        "operationId": "getmaterialFamiliesPublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/materialFamiliesPublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/warehousePublic": {
+      "get": {
+        "tags": [
+          "warehousePublic"
+        ],
+        "summary": "Realiza a carga da lista de Depósitos.",
+        "description": "Este serviço permite a visualização da lista de Depósitos.",
+        "operationId": "getwarehousePublic",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número da página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade de registros por página (a resposta deve retornar o campo hasNext indicando se há mais registros para a proxima página), a quantidade não deve ultrapassar 100, quantidades superiores serão consideradas 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "totalCount",
+            "in": "query",
+            "description": "Considera a contagem total dos registros, respeitando os filtros anteriores.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/warehousePublicResponse"
+            }
+          },
+          "400": {
+            "description": "Erro requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "404": {
+            "description": "Não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "inventoryGroupsPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os Grupos de Estoque cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos Grupos de Estoque cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inventoryGroupsPublic"
+          }
+        }
+      }
+    },
+    "inventoryGroupsPublic": {
+      "type": "object",
+      "description": "Grupo de Estoque",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": "grup-estoque.ge-codigo",
+          "description": "Grupo de Estoque"
+        },
+        "description": {
+          "type": "string",
+          "example": "grup-estoque.descricao",
+          "description": "Descrição"
+        }
+      }
+    },
+    "stockBalancePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os Saldos de Estoque do item cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos Saldos de Estoque do item cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/stockBalancePublic"
+          }
+        }
+      }
+    },
+    "stockBalancePublic": {
+      "type": "object",
+      "description": "Estoque do item",
+      "properties": {
+        "expirationDate": {
+          "type": "string",
+          "format": "date",
+          "example": "saldo-estoq.dt-vali-lote",
+          "description": "Validade Lote"
+        },
+        "itemCode": {
+          "type": "string",
+          "example": "saldo-estoq.it-codigo",
+          "description": "Item"
+        },
+        "lastCountDate": {
+          "type": "string",
+          "format": "date",
+          "example": "saldo-estoq.dt-ul-contag",
+          "description": "Ultima Contagem"
+        },
+        "locationCode": {
+          "type": "string",
+          "example": "saldo-estoq.cod-localiz",
+          "description": "Localização"
+        },
+        "lot": {
+          "type": "string",
+          "example": "saldo-estoq.lote",
+          "description": "Lote/Série"
+        },
+        "manufacturingDate": {
+          "type": "string",
+          "format": "date",
+          "example": "saldo-estoq.dt-fabric",
+          "description": "Data de fabricação"
+        },
+        "qtyAllocated": {
+          "type": "number",
+          "example": "saldo-estoq.qt-alocada",
+          "description": "Quantidade Alocada do item pela preparação do faturamento"
+        },
+        "qtyAllocOrder": {
+          "type": "number",
+          "example": "saldo-estoq.qt-aloc-ped",
+          "description": "Quantidade alocada do item no pedido"
+        },
+        "qtyAllocProd": {
+          "type": "number",
+          "example": "saldo-estoq.qt-aloc-prod",
+          "description": "Quantidade alocada do item na produção"
+        },
+        "qtyAvailBalance": {
+          "type": "number",
+          "example": "saldo-estoq.qtidade-atu",
+          "description": "Qtde Atual"
+        },
+        "referenceCode": {
+          "type": "string",
+          "example": "saldo-estoq.cod-refer",
+          "description": "Referência"
+        },
+        "siteCode": {
+          "type": "string",
+          "example": "saldo-estoq.cod-estabel",
+          "description": "Estabelecimento"
+        },
+        "warehouseCode": {
+          "type": "string",
+          "example": "saldo-estoq.cod-depos",
+          "description": "Depósito"
+        }
+      }
+    },
+    "stockBalanceStorePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os saldos em estoque dos itens cadastrados no ERP pertencentes a integração VTEX",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações os saldos em estoque dos itens cadastrados no ERP pertencentes a integração VTEX",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/stockBalanceStorePublic"
+          }
+        }
+      }
+    },
+    "stockBalanceStorePublic": {
+      "type": "object",
+      "description": "Estoque do item",
+      "properties": {
+        "itemCode": {
+          "type": "string",
+          "example": "movind.saldo-estoq.it-codigo",
+          "description": "Chave ERP - Código do item + código da referência do item (ref-item.cod-refer) quando item possui referência - Exemplo iphone|branco. Quando o item não possuir referência é gravado apenas o código do item."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Saldo em estoque do item"
+        },
+        "referenceCode": {
+          "type": "string",
+          "example": "movind.saldo-estoq.cod-refer",
+          "description": "Referência"
+        },
+        "branchCode": {
+          "type": "string",
+          "example": "movind.saldo-estoq.cod-estabel",
+          "description": "Estabelecimento"
+        },
+        "warehouseCode": {
+          "type": "string",
+          "example": "movind.saldo-estoq.cod-depos",
+          "description": "Depósito"
+        },
+        "erpLastChange": {
+          "type": "string",
+          "format": "date-time",
+          "example": "movind.movto-estoq.dt-trans",
+          "description": "Data e hora da última alteração"
+        }
+      }
+    },
+    "productPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os Itens cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos Itens cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productPublic"
+          }
+        }
+      }
+    },
+    "productPublic": {
+      "type": "object",
+      "description": "Item",
+      "properties": {
+        "auxiliaryCode": {
+          "type": "string",
+          "example": "item.cod-auxiliar",
+          "description": "Código auxiliar de acesso. Exemplo: código senha."
+        },
+        "basePrice": {
+          "type": "number",
+          "example": "item.preco-base",
+          "description": "Preço Base"
+        },
+        "billable": {
+          "type": "boolean",
+          "example": "item.ind-item-fat",
+          "description": "Indica se o item pode ser faturado"
+        },
+        "businessFamily": {
+          "type": "string",
+          "example": "item.fm-cod-com",
+          "description": "Família comercial a qual pertence o item"
+        },
+        "businessUnit": {
+          "type": "string",
+          "example": "item.cod-unid-negoc",
+          "description": "Código da Unidade de Negócio"
+        },
+        "comments": {
+          "type": "string",
+          "example": "item.narrativa",
+          "description": "Narrativa"
+        },
+        "complInformation": {
+          "type": "string",
+          "example": "item.inform-compl",
+          "description": "Inf Complementar"
+        },
+        "controlType": {
+          "type": "integer",
+          "example": "item.tipo-contr",
+          "description": "Tipo de controle do item"
+        },
+        "conversionFactor": {
+          "type": "number",
+          "example": "item.ft-conversao",
+          "description": "Fator de conversão para unidade de medida padrão da família"
+        },
+        "deploymentDate": {
+          "type": "string",
+          "format": "date",
+          "example": "item.data-implant",
+          "description": "Data Implantação"
+        },
+        "familyCode": {
+          "type": "string",
+          "example": "item.fm-codigo",
+          "description": "Família de material a que pertence o item"
+        },
+        "grossWeight": {
+          "type": "number",
+          "example": "item.peso-bruto",
+          "description": "Peso Bruto Unitário do Item"
+        },
+        "height": {
+          "type": "number",
+          "example": "item.altura",
+          "description": "Altura da peça/item em centímetros"
+        },
+        "image": {
+          "type": "string",
+          "example": "item.cod-imagem",
+          "description": "Imagem"
+        },
+        "internalDescription": {
+          "type": "string",
+          "example": "item.desc-nacional",
+          "description": "Descrição Nacional"
+        },
+        "intlDescription": {
+          "type": "string",
+          "example": "item.desc-inter",
+          "description": "Descrição Internacional"
+        },
+        "inventoryGroup": {
+          "type": "integer",
+          "example": "item.ge-codigo",
+          "description": "Grupo de estoque a que pertence o item"
+        },
+        "itemClassification": {
+          "type": "integer",
+          "example": "item.idi-classif-item",
+          "description": "Classifica o item em genérico, produto ou insumo"
+        },
+        "length": {
+          "type": "number",
+          "example": "item.comprim",
+          "description": "Comprimento da peça/item em centímetros"
+        },
+        "measureUnit": {
+          "type": "string",
+          "example": "item.un",
+          "description": "Unidade de medida do item"
+        },
+        "minimumLot": {
+          "type": "number",
+          "example": "item.lote-minimo",
+          "description": "Lote mínimo para compra"
+        },
+        "movementStock": {
+          "type": "boolean",
+          "example": "item.baixa-estoq",
+          "description": "Indica se o item deverá ser baixado do estoque"
+        },
+        "multipleBatch": {
+          "type": "number",
+          "example": "item.lote-multipl",
+          "description": "Lote Múltiplo"
+        },
+        "multipleSaleLot": {
+          "type": "number",
+          "example": "item.lote-mulven",
+          "description": "Lote múltiplo de venda do item"
+        },
+        "netWeight": {
+          "type": "number",
+          "example": "item.peso-liquido",
+          "description": "Peso líquido do item"
+        },
+        "obsolete": {
+          "type": "integer",
+          "example": "item.cod-obsoleto",
+          "description": "Situação"
+        },
+        "obsoleteDate": {
+          "type": "string",
+          "format": "date",
+          "example": "item.data-obsol",
+          "description": "Data em que o item se tornou obsoleto"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "item.it-codigo",
+          "description": "Código do Item"
+        },
+        "productDescription": {
+          "type": "string",
+          "example": "item.desc-item",
+          "description": "Descrição"
+        },
+        "serviceCode": {
+          "type": "integer",
+          "example": "item.cod-servico",
+          "description": "Código de serviço definido pela legislação municipal"
+        },
+        "siteCode": {
+          "type": "string",
+          "example": "item.cod-estabel",
+          "description": "Estabelecimento padrão do item"
+        },
+        "sourceCode": {
+          "type": "integer",
+          "example": "item.cd-origem",
+          "description": "Origem"
+        },
+        "stockType": {
+          "type": "integer",
+          "example": "item.tipo-con-est",
+          "description": "Tipo de Controle de Estoque do Item"
+        },
+        "taxClassification": {
+          "type": "string",
+          "example": "item.class-fiscal",
+          "description": "Classificação Fiscal"
+        },
+        "width": {
+          "type": "number",
+          "example": "item.largura",
+          "description": "Largura da peça/item em centímetros"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "datetime",
+          "example": "item-log.dtm-alter",
+          "description": "data e hora da última alteração"
+        },
+        "businessFamilyDescription": {
+          "type": "string",
+          "example": "fam-comerc.fm-cod-com",
+          "description": "Descrição da Família Comercial"
+        },
+        "familyCodeDescription": {
+          "type": "string",
+          "example": "familia.fm-codigo",
+          "description": "Descrição da Família de Material"
+        },
+        "productReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productReferences"
+          },
+          "description": "Referências do Item."
+        },
+        "altComponent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/altComponent"
+          },
+          "description": "Componentes Alternativos."
+        },
+        "productPacking": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productPacking"
+          },
+          "description": "Embalagens do Item."
+        },
+        "productSiteCost": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productSiteCost"
+          },
+          "description": "Itens do Estabelecimento."
+        },
+        "productSite": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productSite"
+          },
+          "description": "Parametros Itens x Estabelecimento."
+        }
+      }
+    },
+    "productReferences": {
+      "type": "object",
+      "description": "Referências do Item",
+      "properties": {
+        "EANCode": {
+          "type": "string",
+          "example": "ref-item.cod-ean",
+          "description": "Código EAN"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "ref-item.it-codigo",
+          "description": "Código do Item"
+        },
+        "referenceCode": {
+          "type": "string",
+          "example": "ref-item.cod-refer",
+          "description": "Código da referência"
+        },
+        "referenceDescription": {
+          "type": "string",
+          "example": "referencia.descricao",
+          "description": "Descrição da referência"
+        }
+      }
+    },
+    "altComponent": {
+      "type": "object",
+      "description": "Componentes Alternativos",
+      "properties": {
+        "alternativeCode": {
+          "type": "string",
+          "example": "alternativo.al-codigo",
+          "description": "Componente Alternativo"
+        },
+        "componentCode": {
+          "type": "string",
+          "example": "alternativo.es-codigo",
+          "description": "Componente"
+        },
+        "order": {
+          "type": "integer",
+          "example": "alternativo.ordem",
+          "description": "Ordem de prioridade de utilização do componente alternativo"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "alternativo.it-codigo",
+          "description": "Item"
+        },
+        "qtyComponent": {
+          "type": "number",
+          "example": "alternativo.qtd-compon",
+          "description": "Quantidade componente para quantidade referência item"
+        },
+        "qtyProduct": {
+          "type": "number",
+          "example": "alternativo.qtd-item",
+          "description": "Quantidade base do item pai"
+        },
+        "qtyUsed": {
+          "type": "number",
+          "example": "alternativo.quant-usada",
+          "description": "Quantidade bruta utilizada do componente alternativo"
+        },
+        "sequence": {
+          "type": "integer",
+          "example": "alternativo.sequencia",
+          "description": "Seq"
+        }
+      }
+    },
+    "productPacking": {
+      "type": "object",
+      "description": "Embalagens do Item",
+      "properties": {
+        "packingCode": {
+          "type": "string",
+          "example": "item-caixa.sigla-emb",
+          "description": "Sigla da embalagem"
+        },
+        "packingDescription": {
+          "type": "string",
+          "example": "embalag.desc-emb",
+          "description": "Descrição da embalagem"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "item-caixa.it-codigo",
+          "description": "Código do item"
+        },
+        "qtyProduct": {
+          "type": "number",
+          "example": "item-caixa.qt-item",
+          "description": "Quantidade de itens na embalagem"
+        }
+      }
+    },
+    "productSiteCost": {
+      "type": "object",
+      "description": "Itens do Estabelecimento",
+      "properties": {
+        "batchDate": {
+          "type": "string",
+          "format": "date",
+          "example": "item-estab.mensal-ate",
+          "description": "Data do médio batch"
+        },
+        "batchGGFValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-ggf-m",
+          "description": "Valor Unit GGF Batch"
+        },
+        "batchMatValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mat-m",
+          "description": "Valor Unit Mat Batch"
+        },
+        "batchMOBValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mob-m",
+          "description": "Valor Unit Mob Batch"
+        },
+        "onlineDate": {
+          "type": "string",
+          "format": "date",
+          "example": "item-estab.on-line-ate",
+          "description": "Data do médio on-line"
+        },
+        "onlineGGFValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-ggf-o",
+          "description": "Valor Unit GGF On-line"
+        },
+        "onlineMatValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mat-o",
+          "description": "Valor Unit Mat On-line"
+        },
+        "onlineMOBValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mob-o",
+          "description": "Valor Unit Mob On-line"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "item-estab.it-codigo",
+          "description": "Item"
+        },
+        "siteCode": {
+          "type": "string",
+          "example": "item-estab.cod-estabel",
+          "description": "Estabelecimento"
+        },
+        "standardDate": {
+          "type": "string",
+          "format": "date",
+          "example": "item-estab.padrao-ate",
+          "description": "Data do padrão"
+        },
+        "standardGGFValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-ggf-p",
+          "description": "Valor Unit GGF Padrão"
+        },
+        "standardMatValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mat-p",
+          "description": "Valor Unit Mat Padrão"
+        },
+        "standardMOBValue": {
+          "type": "number",
+          "example": "item-estab.val-unit-mob-p",
+          "description": "Valor Unit Mob Padrão"
+        },
+        "warehouseCode": {
+          "type": "string",
+          "example": "item-estab.deposito-pad",
+          "description": "Depósito"
+        }
+      }
+    },
+    "productSite": {
+      "type": "object",
+      "description": "Parametros Itens x Estabelecimento",
+      "properties": {
+        "basePrice": {
+          "type": "number",
+          "example": "item-uni-estab.preco-base",
+          "description": "Preço Base"
+        },
+        "billable": {
+          "type": "boolean",
+          "example": "item-uni-estab.ind-item-fat",
+          "description": "Indica se o item pode ser faturado"
+        },
+        "businessUnit": {
+          "type": "string",
+          "example": "item-uni-estab.cod-unid-negoc",
+          "description": "Código Unidade Negócio"
+        },
+        "EANCode": {
+          "type": "string",
+          "example": "item-uni-estab.ean-code",
+          "description": "Código de identificação padrão do item"
+        },
+        "economicLot": {
+          "type": "number",
+          "example": "item-uni-estab.lote-economi",
+          "description": "Lote Econômico"
+        },
+        "minimumLot": {
+          "type": "number",
+          "example": "item-uni-estab.lote-minimo",
+          "description": "Lote mínimo para compra"
+        },
+        "multipleBatch": {
+          "type": "number",
+          "example": "item-uni-estab.lote-multipl",
+          "description": "Lote Múltiplo"
+        },
+        "multipleSaleLot": {
+          "type": "number",
+          "example": "item-uni-estab.lote-mulven",
+          "description": "Lote múltiplo de venda do item"
+        },
+        "negativeBalance": {
+          "type": "integer",
+          "example": "item-uni-estab.perm-saldo-neg",
+          "description": "Permite parametrizar o Tipo de Saldo"
+        },
+        "obsolete": {
+          "type": "integer",
+          "example": "item-uni-estab.cod-obsoleto",
+          "description": "Situação"
+        },
+        "productCode": {
+          "type": "string",
+          "example": "item-uni-estab.it-codigo",
+          "description": "Código do item"
+        },
+        "siteCode": {
+          "type": "string",
+          "example": "item-uni-estab.cod-estabel",
+          "description": "Código do Estabelecimento"
+        }
+      }
+    },
+    "productStorePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os itens cadastrados no ERP pertecentes a integração VTEX",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos Itens cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productStorePublic"
+          }
+        }
+      }
+    },
+    "productStorePublic": {
+      "type": "object",
+      "description": "Item",
+      "properties": {
+        "categoryCode": {
+          "type": "string",
+          "example": "mgind.item.fm-cod-com",
+          "description": "Família comercial a qual pertence o item"
+        },
+        "itemDescription": {
+          "type": "string",
+          "example": "mgind.item.desc-item",
+          "description": "Descrição do item"
+        },
+        "itemCode": {
+          "type": "string",
+          "example": "mgind.item.it-codigo",
+          "description": "Código do item"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": "mgind.item.cod-obsoleto",
+          "description": "Situção do item"
+        },
+        "erpLastChange": {
+          "type": "string",
+          "format": "date-time",
+          "example": "mgind.item-log.dtm-alter",
+          "description": "Data e hora da última alteração"
+        }
+      }
+    },
+    "productSkuStorePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna os SKU´s cadastrados no ERP pertecentes a integração VTEX",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações dos SKU´s cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productSkuStorePublic"
+          }
+        }
+      }
+    },
+    "productSkuStorePublic": {
+      "type": "object",
+      "description": "Item",
+      "properties": {
+        "referenceCode": {
+          "type": "string",
+          "example": "mgind.item.cod-refer",
+          "description": "Referência do item"
+        },
+        "itemDescription": {
+          "type": "string",
+          "example": "mgind.item.desc-item",
+          "description": "Descrição do item"
+        },
+        "itemCode": {
+          "type": "string",
+          "example": "mgind.item.it-codigo",
+          "description": "Chave ERP - Código do item + código da referência do item (ref-item.cod-refer) quando item possui referência - Exemplo iphone|branco. Quando o item não possuir referência é gravado apenas o código do item."
+        },
+        "barCode": {
+          "type": "string",
+          "example": "mgind.item-mat.cod-ean",
+          "description": "Código GTIN/EAN do item"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": "mgind.item.cod-obsoleto",
+          "description": "Situção do item"
+        },
+        "length": {
+          "type": "number",
+          "example": "mgind.item.comprim",
+          "description": "Comprimento da peça/item em centímetros"
+        },
+        "height": {
+          "type": "number",
+          "example": "mgind.item.altura",
+          "description": "Altura da peça/item em centímetros"
+        },
+        "width": {
+          "type": "number",
+          "example": "mgind.item.largura",
+          "description": "Largura da peça/item em centímetros"
+        },
+        "weight": {
+          "type": "number",
+          "example": "mgind.item.peso-liquido",
+          "description": "Peso líquido do item"
+        },
+        "realWeight": {
+          "type": "number",
+          "example": "mgind.item.peso-bruto",
+          "description": "Peso bruto do item"
+        },
+        "measurementUnit": {
+          "type": "string",
+          "example": "mgind.item.un",
+          "description": "Unidade de medida do item"
+        },
+        "productRootCode": {
+          "type": "string",
+          "example": "mgind.item.it-codigo",
+          "description": "Código do item raiz"
+        },
+        "erpLastChange": {
+          "type": "string",
+          "format": "date-time",
+          "example": "mgind.item-log.dtm-alter",
+          "description": "Data e hora da última alteração"
+        }
+      }
+    },
+    "materialFamiliesPublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna as Famílias de Materiais cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações das Famílias de Materiais cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/materialFamiliesPublic"
+          }
+        }
+      }
+    },
+    "materialFamiliesPublic": {
+      "type": "object",
+      "description": "Família de Material",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "familia.fm-codigo",
+          "description": "Código da Família de Material"
+        },
+        "description": {
+          "type": "string",
+          "example": "familia.descricao",
+          "description": "Descrição"
+        },
+        "measureUnit": {
+          "type": "string",
+          "example": "familia.un",
+          "description": "Unidade Padrão da Família"
+        },
+        "measureUnitDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/measureUnit"
+          },
+          "description": "Unidade de Medida."
+        }
+      }
+    },
+    "measureUnit": {
+      "type": "object",
+      "description": "Unidade de Medida",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "tab-unidade.un",
+          "description": "Unid Medid"
+        },
+        "descDimension": {
+          "type": "string",
+          "example": "-",
+          "description": "Descrição Dimensão"
+        },
+        "description": {
+          "type": "string",
+          "example": "tab-unidade.descricao",
+          "description": "Descrição"
+        },
+        "dimensionCode": {
+          "type": "integer",
+          "example": "tab-unidade.dimensao",
+          "description": "Dimensão"
+        },
+        "fiscalAcronym": {
+          "type": "string",
+          "example": "-",
+          "description": "Abreviatura Fiscal"
+        }
+      }
+    },
+    "warehousePublicResponse": {
+      "type": "object",
+      "description": "Resposta da requisição do serviço que retorna a lista de Depósitos cadastrados no ERP",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Quantidade de registros"
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "items": {
+          "description": "Lista contendo informações da lista de Depósitos cadastrados no ERP",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warehousePublic"
+          }
+        }
+      }
+    },
+    "warehousePublic": {
+      "type": "object",
+      "description": "Depósito",
+      "properties": {
+        "allocWmsQty": {
+          "type": "boolean",
+          "example": "deposito.log-aloca-qtd-wms",
+          "description": "Indica se os armazenamentos no WMS devem alocar saldos no ERP."
+        },
+        "code": {
+          "type": "string",
+          "example": "deposito.cod-depos",
+          "description": "Depósito"
+        },
+        "considerMrpOrders": {
+          "type": "boolean",
+          "example": "deposito.log-ordens-mrp",
+          "description": "Considera ordens no MRP quando não considera saldo do depósito"
+        },
+        "customerCode": {
+          "type": "integer",
+          "example": "-",
+          "description": "Código do emitente"
+        },
+        "descWarehouseType": {
+          "type": "string",
+          "example": "-",
+          "description": "Descrição Tipo de Depósito"
+        },
+        "finishedProdWarehouse": {
+          "type": "boolean",
+          "example": "deposito.ind-acabado",
+          "description": "Depósito de produtos acabados"
+        },
+        "includeAllocBalance": {
+          "type": "boolean",
+          "example": "deposito.alocado",
+          "description": "Considera saldo para alocação"
+        },
+        "includeAvailBalance": {
+          "type": "boolean",
+          "example": "deposito.cons-saldo",
+          "description": "Considera Saldo Disponível"
+        },
+        "name": {
+          "type": "string",
+          "example": "deposito.nome",
+          "description": "Descrição do Depósito"
+        },
+        "processWarehouse": {
+          "type": "boolean",
+          "example": "deposito.ind-processo",
+          "description": "Depósito de processo"
+        },
+        "QcWarehouse": {
+          "type": "boolean",
+          "example": "deposito.ind-dep-cq",
+          "description": "Depósito de Controle de Qualidade"
+        },
+        "recycledWarehouse": {
+          "type": "boolean",
+          "example": "deposito.log-reciclagem",
+          "description": "Depósito para material reciclado"
+        },
+        "scrapWarehouse": {
+          "type": "boolean",
+          "example": "deposito.ind-dep-rej",
+          "description": "Depósito de Rejeitos"
+        },
+        "shortName": {
+          "type": "string",
+          "example": "deposito.nome-abrev",
+          "description": "Nome abreviado do destinatário em remessa para deposito externo"
+        },
+        "warehouseType": {
+          "type": "integer",
+          "example": "deposito.ind-tipo-dep",
+          "description": "Tipo de Depósito"
+        },
+        "wmsWarehouse": {
+          "type": "boolean",
+          "example": "deposito.log-gera-wms",
+          "description": "Indicar se o depósito é de WMS ou não"
+        }
+      }
+    }
+  }
+}
