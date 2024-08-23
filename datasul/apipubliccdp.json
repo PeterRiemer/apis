@@ -2653,6 +2653,21 @@
           "title": "mgadm.emitente.nome-emit",
           "description": "Nome Completo do Emitente"
         },
+        "currency": {
+          "type": "string",
+          "title": "mgadm.moeda.char-2",
+          "description": "Currency"
+        },
+        "totvsCurrency": {
+          "type": "string",
+          "title": "mgadm.moeda.mo-codigo",
+          "description": "Moeda Totvs"
+        },
+        "incoterm": {
+          "type": "string",
+          "title": "mgadm.emitente-cex.incoterm-exp",
+          "description": "Incoterm"
+        },        
         "defaultHolder": {
           "type": "integer",
           "title": "mgadm.emitente.port-prefer",
